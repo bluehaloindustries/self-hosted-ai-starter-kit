@@ -32,7 +32,7 @@ x-ollama: &service-ollama
     - 11434:11434
   volumes:
     - ollama_storage:/root/.ollama
-  embedding_model: nomic-embed-text
+ 
   
   
 x-init-ollama: &init-ollama
@@ -126,6 +126,7 @@ services:
     profiles: ["gpu-nvidia"]
     <<: *service-ollama
     deploy:
+     embedding_model: nomic-embed-text
       resources:
         reservations:
           devices:
