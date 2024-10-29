@@ -58,9 +58,6 @@ services:
     volumes:
       - open-webui:/app/backend/data
   
-  
-  
-  
   postgres:
     image: postgres:16-alpine
     networks: ['demo']
@@ -132,6 +129,10 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+    ulimits:
+      memlock:
+        soft: 8192000000
+        hard: 8192000000
 
   ollama-pull-llama-cpu:
     profiles: ["cpu"]
