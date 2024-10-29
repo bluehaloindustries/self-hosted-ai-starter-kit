@@ -25,6 +25,8 @@ store with an comprehensive API
 ✅ [**PostgreSQL**](https://www.postgresql.org/) -  Workhorse of the Data
 Engineering world, handles large amounts of data safely.
 
+
+
 ### What you can build
 
 ⭐️ **AI Agents** for scheduling appointments
@@ -40,7 +42,7 @@ Engineering world, handles large amounts of data safely.
 ### Cloning the Repository
 
 ```bash
-git clone https://github.com/n8n-io/self-hosted-ai-starter-kit.git
+git clone https://github.com/bluehaloindustries/self-hosted-ai-starter-kit.git
 cd self-hosted-ai-starter-kit
 ```
 
@@ -49,7 +51,7 @@ cd self-hosted-ai-starter-kit
 #### For Nvidia GPU users
 
 ```
-git clone https://github.com/n8n-io/self-hosted-ai-starter-kit.git
+git clone https://github.com/bluehaloindustries/self-hosted-ai-starter-kit.git
 cd self-hosted-ai-starter-kit
 docker compose --profile gpu-nvidia up
 ```
