@@ -126,8 +126,7 @@ services:
     profiles: ["gpu-nvidia"]
     <<: *service-ollama
     deploy:
-     embedding_model: nomic-embed-text
-      resources:
+     resources:
         reservations:
           devices:
             - driver: nvidia
