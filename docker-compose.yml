@@ -52,7 +52,7 @@ services:
     restart: unless-stopped
     container_name: open-webui
     ports:
-      - 3000:3000"
+      - 3000:8080
     extra_hosts:
       - open-webui:/app/backend/data
   
