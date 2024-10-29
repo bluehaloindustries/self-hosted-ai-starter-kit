@@ -131,7 +131,7 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              count: all
+              count: 16
               capabilities: [gpu]
     ulimits:
       memlock:
