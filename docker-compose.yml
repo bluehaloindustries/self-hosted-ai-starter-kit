@@ -32,10 +32,7 @@ x-ollama: &service-ollama
     - 11434:11434
   volumes:
     - ollama_storage:/root/.ollama
-  timeout:
-    response_timeout_ms: 20000000000
-    conversation_timeout_ms: 40000000000
-
+  
 x-init-ollama: &init-ollama
   image: ollama/ollama:latest
   networks: ['demo']
@@ -131,7 +128,7 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              count: 16
+              count: 4
               capabilities: [gpu]
     ulimits:
       memlock:
