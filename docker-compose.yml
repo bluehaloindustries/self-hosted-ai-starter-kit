@@ -48,7 +48,6 @@ x-init-ollama: &init-ollama
     - "sleep 5; OLLAMA_HOST=ollama:11434 ollama pull nomic-embed-text"
 
 services:
-  
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     networks: ['demo']
