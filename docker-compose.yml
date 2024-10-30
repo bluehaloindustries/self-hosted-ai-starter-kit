@@ -3,7 +3,6 @@ volumes:
   postgres_storage:
   ollama_storage:
   qdrant_storage:
-  open-webui:
 
 networks:
   demo:
@@ -32,9 +31,7 @@ x-ollama: &service-ollama
     - 11434:11434
   volumes:
     - ollama_storage:/root/.ollama
- 
-  
-  
+
 x-init-ollama: &init-ollama
   image: ollama/ollama:latest
   networks: ['demo']
@@ -44,27 +41,13 @@ x-init-ollama: &init-ollama
   entrypoint: /bin/sh
   command:
     - "-c"
-    - "sleep 3; OLLAMA_HOST=ollama:11434 ollama pull llama3.2; OLLAMA_HOST=ollama:11434 ollama pull nomic-embed-text"
+    - "sleep 3; OLLAMA_HOST=ollama:11434 ollama pull llama3.2"
 
 services:
-  open-webui:
-    image: ghcr.io/open-webui/open-webui:main
-    networks: ['demo']
-    restart: unless-stopped
-    container_name: open-webui
-    ports:
-      - "3000:3000"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    volumes:
-      - open-webui:/app/backend/data
-  
   postgres:
     image: postgres:16-alpine
     networks: ['demo']
     restart: unless-stopped
-    ports:
-      - "5432:5432"
     environment:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
@@ -120,7 +103,7 @@ services:
     profiles: ["cpu"]
     <<: *service-ollama
 
-   ollama-gpu:
+  ollama-gpu:
     profiles: ["gpu-nvidia"]
     <<: *service-ollama
     deploy:
@@ -130,10 +113,6 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-    ulimits:
-      memlock:
-        soft: 8192000000
-        hard: 8192000000
 
   ollama-pull-llama-cpu:
     profiles: ["cpu"]
