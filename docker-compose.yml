@@ -122,15 +122,15 @@ services:
     profiles: ["cpu"]
     <<: *service-ollama
 
-  ollama-gpu:
+   ollama-gpu:
     profiles: ["gpu-nvidia"]
     <<: *service-ollama
     deploy:
-     resources:
+      resources:
         reservations:
           devices:
             - driver: nvidia
-              count: 4
+              count: 2
               capabilities: [gpu]
     ulimits:
       memlock:
